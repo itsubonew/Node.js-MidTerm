@@ -8,10 +8,15 @@ module.exports = class Article {
     }
 
     save() {
-        const sql = "INSERT INTO Articles (Title, Description, Markdown) VALUES (?, ?, ?)";
+        const sql = "INSERT INTO Articles2 (Title, Description, Markdown) VALUES (?, ?, ?)";
         const params = [this.Title, this.Description,this.Markdown];
 
         return dbConnection.execute(sql,params);
+    }
+
+    static find(){
+        const sql = "SELECT * FROM Articles2 ORDER BY Articles_ID DESC"
+        return dbConnection.query(sql);
     }
 
     // static 

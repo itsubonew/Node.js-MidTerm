@@ -19,5 +19,17 @@ module.exports = class Article {
         return dbConnection.query(sql);
     }
 
+    static updateOne(data) {
+        const sql = 
+        "UPDATE Article SET Title = ?, Description = ?, Markdown = ? WHERE (Articles_ID = ?)";
+        const params = [data.title, data.Description, data.Markdown, data.id];
+        return dbConnection.execute(sql, params);
+    }
+
+    static deleteOne(id) {
+        const sql = "DELETE FROM Articles WHERE Articles_ID = ?";
+        return dbConnection.execute(sql,[id]);
+    };
+
     // static 
 }

@@ -11,6 +11,9 @@ router.get('/', async (req, res) => {
 
 router.get('/:id',(req,res )=> {
     res.send(req.params.id)
+
+    const idd = req.params.id;
+    console.log(idd)
 })
 
 router.post('/',(req,res) => {
@@ -22,6 +25,9 @@ const article = new Article(title,description,markdown)
 // }catch (e){
 // res.render('articles/new',{ article: article })
 // }
+
+router.delete("/delete/:id",() => console.log("deleting!"));
+
 article.save()
 .then((data)=>{
     console.log(data[0][0])

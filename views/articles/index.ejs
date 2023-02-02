@@ -10,16 +10,33 @@
 <body>
     <div class="container">
     <h1 class="mb-4">Blog Articles</h1>
-    <a href="/articles" class="btn btn-success">New Article</a>
+    <a href="/articles" class="btn btn-warning text-white">New Article</a>
+   
 
-    
+  
 
     
     <% datas.forEach(data => { %>
-     <h1><%= data.Title %> </h1>
-     <h1><%= data.Description %> </h1>
-     <h1><%= data.Markdown %> </h1>
+        <div class="card mt-4">
+            <div class="card-body">
+              <h4 class="card-title"><h1><%= data.Title %> </h1></h4>
+              <div class="card-subtitle text-muted mb-2">
+               
+              </div>
+              <div class="card-text mb-2"><h1><%= data.Description %> </div>
+                <h1><%= data.Markdown %> </h1>
+              <a href="articles/<%= data.slug %>" class="btn btn-primary">Read More</a>
+              <a href="articles/<%= data.Articles_ID %>" class="btn btn-info">Edit</a>
+              <form action="/articles/<%= data.id %>?_method=DELETE" method="POST" class="d-inline">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </div>
+          </div>
+          
+     
      <br>
+     
+ 
     <% }) %> 
     <h1>iiiiii</h1>
 </div>

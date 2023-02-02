@@ -35,7 +35,11 @@ app.get('/', (req, res) => {
     
 })
 
+
+
 app.use('/articles', articleRouter)
+
+
 // app.listen(5000, async () => {
 //     console.log('listening to port');
 const port = 8001

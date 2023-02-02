@@ -19,10 +19,10 @@ module.exports = class Article {
         return dbConnection.query(sql);
     }
 
-    static updateOne(data) {
+    updateOne(id) {
         const sql = 
         "UPDATE Article SET Title = ?, Description = ?, Markdown = ? WHERE (Articles_ID = ?)";
-        const params = [data.title, data.Description, data.Markdown, data.id];
+        const params = [this.title, this.Description, this.Markdown, id];
         return dbConnection.execute(sql, params);
     }
 

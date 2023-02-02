@@ -27,7 +27,7 @@ module.exports = class Article {
     }
 
     static deleteOne(id) {
-        const sql = "DELETE FROM Articles WHERE Articles_ID = ?";
+        const sql = "DELETE FROM Articles2 WHERE (Articles_ID = ?)";
         return dbConnection.execute(sql,[id]);
     };
 

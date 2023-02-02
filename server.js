@@ -29,16 +29,13 @@ app.get('/', (req, res) => {
     
     Article.find()
     .then((data)=>{
-        console.log(";lkj;lkj;lkj;lkj;lk;k",data[0],";lkj;lkj;lkj;lkj;lkj;lkj;jk ");
+        // console.log(";lkj;lkj;lkj;lkj;lk;k",data[0],";lkj;lkj;lkj;lkj;lkj;lkj;jk ");
         res.render('index', {datas: data[0]})
     }).catch((err)=>console.error(err.message));
     
 })
 
-
-
 app.use('/articles', articleRouter)
-
 
 // app.listen(5000, async () => {
 //     console.log('listening to port');

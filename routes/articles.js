@@ -9,32 +9,76 @@ router.get('/', async (req, res) => {
     res.render('new')
 })
 
-router.get('/:id',(req,res )=> {
+router.get('/:id',(req,res)=> {
     res.send(req.params.id)
-
-    const idd = req.params.id;
-    console.log(idd)
 })
 
 router.post('/',(req,res) => {
 const {title, description, markdown} = req.body;
 const article = new Article(title,description,markdown)
-// try{
-//     article = await article.save()
-//     res.redirect(`/articles/${article.id}`)
-// }catch (e){
-// res.render('articles/new',{ article: article })
-// }
 
-router.delete("/delete/:id",() => console.log("deleting!"));
+
 
 article.save()
 .then((data)=>{
-    console.log(data[0][0])
+    // console.log(data[0][0])
     res.redirect("/");
     
 }).catch((err)=>console.error(err))
  
 })
+
+router.get("/:id/edit",updateOne);
+
+const undateArticle = {
+    id: +req.params.id,
+    title,
+    description,
+    markdown
+}
+
+Article.updateOne(
+    req.params.id,
+    title,
+    description,
+    markdown,({message, status}) => {
+        if (status === 200) {
+            res.redirect("/");
+        } else{
+            res.status(status).send(message);
+        }
+    }
+)
+//async(req, res, next) => {
+//     const itsubo = req.params.id;
+//     next()
+//     const  updateOne = await Article.updateOne(itsubo);
+//     console.log(updateOne);
+//     res.redirect("/")
+// }
+router.put("/:id/edit", updateOne);
+
+router.post("/delete/:id",async(req, res, next) => {
+    const iwatani = req.params.id;
+    next()
+    // Article.deleteOne(iwatani).
+    // then((data)=>{
+    //     console.log(data);
+    //     res.redirect("/");
+
+    // }).catch((err)=>console.error(err.message))
+        const deleteOne = await Article.deleteOne(iwatani);
+        
+        console.log(deleteOne)
+        
+        res.redirect("/")
+    
+
+    
+});
+
+
+
+
 
 module.exports = router

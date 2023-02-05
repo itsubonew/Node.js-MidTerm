@@ -7,6 +7,9 @@ const dbConnection = require("./util/mysql");
 const path =require("path");
 const Article = require('./models/articles');
 
+
+
+
 // mongoose.connect('mongodb://localhost/blog',{ useNewUrlParser: true })
 
 app.set('view engine','ejs')

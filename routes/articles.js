@@ -28,27 +28,27 @@ article.save()
  
 })
 
-router.get("/:id/edit",updateOne);
+router.get("/:id/edit",Article.updateOne);
 
-const undateArticle = {
-    id: +req.params.id,
-    title,
-    description,
-    markdown
-}
+// const undateArticle = {
+//     id: +req.params.id,
+//     title,
+//     description,
+//     markdown
+// }
 
-Article.updateOne(
-    req.params.id,
-    title,
-    description,
-    markdown,({message, status}) => {
-        if (status === 200) {
-            res.redirect("/");
-        } else{
-            res.status(status).send(message);
-        }
-    }
-)
+// Article.updateOne(
+//     req.params.id,
+//     title,
+//     description,
+//     markdown,({message, status}) => {
+//         if (status === 200) {
+//             res.redirect("/");
+//         } else{
+//             res.status(status).send(message);
+//         }
+//     }
+// )
 //async(req, res, next) => {
 //     const itsubo = req.params.id;
 //     next()
